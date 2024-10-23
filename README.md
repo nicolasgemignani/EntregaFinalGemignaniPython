@@ -18,3 +18,8 @@ Este proyecto es una aplicación web para crear y gestionar un portafolio person
 - **HTML/CSS**: Lenguajes de marcado y estilo utilizados para el diseño frontend.
 - **Bootstrap**: Framework CSS para un diseño responsivo y moderno.
 - **SendGrid**: Servicio utilizado para el envío de correos electrónicos.
+
+
+## Super Usuario
+nicolas
+homero123
