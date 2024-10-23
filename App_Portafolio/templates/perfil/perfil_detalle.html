@@ -1,0 +1,37 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <section class="py-5">
+        <div class="container px-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Perfil</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8 ">
+                    <!-- Project Card 1-->
+                    <div class="card overflow-hidden shadow rounded-4 border-0 mb-3">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="p-5">
+                                    <h2 class="fw-bolder">{{ perfil.nombre_completo }}</h2>
+                                    <p><strong>Biografia:</strong> {{ perfil.bio }}</p>
+                                    <p><strong>Linkedin:</strong><a href="{{ perfil.linkedin }}">{{ perfil.linkedin }}</a></p>
+                                    <p class="mb-0"><strong>GitHub:</strong> <a href="{{ perfil.github }}">{{ perfil.github }}</a></p>
+                                </div>
+                                <div class="">
+                                    {% if perfil.foto_perfil %}
+                                        <img class="rounded-3" src="{{ perfil.foto_perfil.url}}" alt="Foto de Perfil" />
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="ms-5 mb-3">
+                                <a class="btn btn-primary" href="{% url 'perfil_editar' %}">Editar Perfil</a>
+                            </div>
+                            <a class="btn btn-outline-dark btn-lg fs-6 fw-bolder ms-5 mb-4" href="{% url 'Home' %}">Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock contenido %}

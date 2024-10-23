@@ -1,0 +1,18 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>Agregar Tecnología</h1>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'tecnologia_lista' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </form>
+
+        
+    </div>
+{% endblock contenido %}

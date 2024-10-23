@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-4">
+        <h2 class="text-danger">¿Estás seguro de que deseas eliminar tu perfil?</h2>
+        <p class="text-warning">Esta acción no se puede deshacer y borrara toda informacion guardada de este Perfil</p>
+
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'perfil_detalle' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </form>
+    </div>
+{% endblock contenido %}

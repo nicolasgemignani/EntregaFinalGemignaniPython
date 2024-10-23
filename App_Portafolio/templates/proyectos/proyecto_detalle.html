@@ -1,0 +1,21 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>{{ proyecto.nombre }}</h1>
+
+        <p><strong>Descripción:</strong> {{ proyecto.descripcion }}</p>
+        <p><strong>Fecha de realización:</strong> {{ proyecto.fecha_realizacion }}</p>
+        <p><strong>URL del proyecto:</strong> <a href="{{ proyecto.url_proyecto }}" target="_blank">{{ proyecto.url_proyecto }}</a></p>
+
+        {% if proyecto.imagen %}
+            <img src="{{ proyecto.imagen.url }}" alt="Imagen de Proyecto" class="img-fluid mb-3" style="max-width: 300px;">
+        {% endif %}
+
+        <div class="mt-4">
+            <a href="{% url 'proyecto_editar' proyecto.pk %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'proyecto_borrar' proyecto.pk %}" class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'proyecto_lista' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </div>
+    </div>
+{% endblock contenido %}

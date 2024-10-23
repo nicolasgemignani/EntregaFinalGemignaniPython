@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Crear Perfil</h1>
+
+        <form action="" method="post" enctype="multipart/form-data" class="border p-4 rounded">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Crear Perfil</button>
+        </form>
+
+        <a href="{% url 'Home' %}" class="btn btn-secondary mt-3">Volver</a>
+    </div>
+{% endblock contenido %}

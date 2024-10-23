@@ -1,0 +1,38 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <section class="container mt-4">
+        <!-- Skillset Card-->
+        <div class="card shadow border-0 rounded-4 mb-1">
+            <div class="card-body p-5">
+                <!-- Professional skills list-->
+                <div class="">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Tecnologias</span></h3>
+                    </div>
+                    <div class="row">
+                        {% for tecnologia in tecnologias %}
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="bg-light rounded-4 p-3 h-100 text-center">
+                                    <h5>
+                                        <a href="{% url 'tecnologia_detalle' tecnologia.pk %}" class="text-dark">{{ tecnologia.nombre }}</a>
+                                    </h5>
+                                    {% if tecnologia.imagen %}
+                                        <img src="{{ tecnologia.imagen.url }}" alt="Imagen Tecnología" class="rounded-3" style="max-width: 100px;">
+                                    {% else %}
+                                        .
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'tecnologia_crear' %}" class="btn btn-primary my-3">Agregar nueva Tecnología</a>
+            <a class="btn btn-outline-dark fw-bolder" href="{% url 'Home' %}">Home</a>
+        </div>
+    </section>
+{% endblock contenido %}

@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>Editar Proyecto: {{ proyecto.nombre }}</h1>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </form>
+    </div>
+{% endblock contenido %}

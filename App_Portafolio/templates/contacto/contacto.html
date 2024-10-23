@@ -1,0 +1,21 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>Contáctanos</h1>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="{% url 'Home' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </form>
+        {% if error %}
+            <div class="alert alert-danger mt-3" role="alert">
+                Error: {{ error }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock contenido %}

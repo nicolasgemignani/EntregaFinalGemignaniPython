@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>Agregar Proyecto</h1>
+
+        <form action="" method="post" enctype="multipart/form-data" class="mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+
+        <a href="{% url 'proyecto_lista' %}" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+{% endblock contenido %}

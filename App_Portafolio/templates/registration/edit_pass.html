@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h2>Cambiar Contraseña</h2>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+            <a href="{% url 'edit_usuario' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </form>
+    </div>
+{% endblock contenido %}

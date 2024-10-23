@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>{{ tecnologia.nombre }}</h1>
+        {% if tecnologia.imagen %}
+            <img src="{{ tecnologia.imagen.url }}" alt="Imagen de Tecnología" class="img-fluid" style="max-width: 300px;">
+        {% endif %}
+
+        <div class="mt-4">
+            <a href="{% url 'tecnologia_editar' tecnologia.pk %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'tecnologia_borrar' tecnologia.pk %}" class="btn btn-danger">Eliminar</a>
+            <a href="{% url 'tecnologia_lista' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </div>
+    </div>
+{% endblock contenido %}

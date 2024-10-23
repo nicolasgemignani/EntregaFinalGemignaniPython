@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h2 class="mb-4">¿Estás seguro que deseas eliminar el estudio "{{ estudio.nombre }}"?</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a href="{% url 'estudio_detalle' estudio.pk %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+    </form>
+
+    
+</div>
+{% endblock contenido %}

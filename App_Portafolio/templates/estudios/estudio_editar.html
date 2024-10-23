@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+<section class="container mt-4">
+    <h1 class="mb-4">Editar Estudio: {{ form.instance.nombre }}</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+
+    <a href="{% url 'estudio_detalle' form.instance.pk %}" class="btn btn-secondary mt-3">Cancelar</a>
+</section>
+{% endblock contenido %}

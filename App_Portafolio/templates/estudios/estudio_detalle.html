@@ -1,0 +1,28 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+<section class="container">
+    <h1 class="mb-4">{{ estudio.nombre }}</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Tipo:</strong> {{ estudio.get_tipo_display }}</p>
+            <p><strong>Descripción:</strong> {{ estudio.descripcion }}</p>
+            <p><strong>Fecha de inicio:</strong> {{ estudio.fecha_inicio }}</p>
+            <p><strong>Fecha de fin:</strong> {{ estudio.fecha_fin|default:"No especificada" }}</p>
+
+            {% if estudio.imagen %}
+                <img src="{{ estudio.imagen.url }}" alt="Imagen de Estudio" class="img-fluid mt-3" style="max-width: 300px;">
+            {% endif %}
+        </div>
+        <div class="ms-3 mb-3">
+            <a href="{% url 'estudio_editar' estudio.pk %}" class="btn btn-warning me-2">Editar</a>
+            <a href="{% url 'estudio_borrar' estudio.pk %}" class="btn btn-danger me-2">Eliminar</a>
+            <a href="{% url 'estudio_lista' %}" class="btn btn-outline-dark fw-bolder">Cancelar</a>
+        </div>
+    </div>
+
+    
+</section>
+    
+{% endblock contenido %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ perfil.nombre_completo }} - Perfil</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        background: linear-gradient(to bottom right, #4a90e2, #d8e2f3); /* Gradiente de azul a un tono más claro */
+        color: #333; /* Color de texto oscuro para un mejor contraste */
+        }
+        .container {
+        margin-top: 50px;
+        background: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+        }
+        .card img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mb-5">
+        <h1>{{ perfil.nombre_completo }}</h1>
+        
+        {% if perfil.foto_perfil %}
+            <img src="{{ perfil.foto_perfil.url }}" alt="Foto de perfil" class="rounded-circle" style="max-width: 200px;">
+        {% endif %}
+
+        <h2>Perfil</h2>
+        <p><strong>Email:</strong> {{ perfil.user.email }}</p>
+        <p><strong>Bio:</strong> {{ perfil.bio }}</p>
+        <p><strong>LinkedIn:</strong> <a href="{{ perfil.linkedin }}">{{ perfil.linkedin }}</a></p>
+        <p><strong>GitHub:</strong> <a href="{{ perfil.github }}">{{ perfil.github }}</a></p>
+
+        <h2>Estudios</h2>
+        <div class="row">
+            {% for estudio in estudios %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ estudio.nombre }}</h5>
+                            <p class="card-text"><strong>Tipo:</strong> {{ estudio.tipo }}</p>
+                            <p class="card-text"><strong>Fecha:</strong> {{ estudio.fecha_inicio }} a {{ estudio.fecha_fin }}</p>
+                            {% if estudio.imagen %}
+                                <img src="{{ estudio.imagen.url }}" alt="Imagen de Estudio" class="card-img-bottom">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Tecnologías</h2>
+        <div class="row">
+            {% for tecnologia in tecnologias %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ tecnologia.nombre }}</h5>
+                            {% if tecnologia.imagen %}
+                                <img src="{{ tecnologia.imagen.url }}" alt="Imagen de Tecnología" class="card-img-bottom">
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Proyectos</h2>
+        <div class="row">
+            {% for proyecto in proyectos %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                            <p class="card-text"><strong>Fecha:</strong> {{ proyecto.fecha_realizacion }}</p>
+                            <p class="card-text">{{ proyecto.descripcion }}</p>
+                            {% if proyecto.imagen %}
+                                <img src="{{ proyecto.imagen.url }}" alt="Imagen de Proyecto" class="card-img-bottom">
+                            {% endif %}
+                            {% if proyecto.url_proyecto %}
+                                <a href="{{ proyecto.url_proyecto }}" class="btn btn-primary">Ver Proyecto</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <a href="{% url 'Home' %}" class="btn btn-secondary">Volver al inicio</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

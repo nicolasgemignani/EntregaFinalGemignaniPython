@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <h1>¿Estás seguro que deseas eliminar: <strong>{{ tecnologia.nombre }}</strong>?</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+        </form>
+
+        <a href="{% url 'tecnologia_detalle' tecnologia.pk %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </div>
+{% endblock contenido %}

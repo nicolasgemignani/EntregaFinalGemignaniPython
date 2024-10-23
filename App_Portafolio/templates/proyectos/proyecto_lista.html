@@ -1,0 +1,39 @@
+{% extends 'padre.html' %}
+
+{% block contenido %}
+    <section class="py-5">
+        <div class="container px-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Proyectos</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Project Card -->
+                    {% for proyecto in proyectos %}
+                        <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5">
+                                        <h2 class="fw-bolder">
+                                            <a href="{% url 'proyecto_detalle' proyecto.pk %}" class="text-dark">{{ proyecto.nombre }}</a>
+                                        </h2>
+                                        <p>{{proyecto.descripcion}}</p>
+                                    </div>
+                                    {% if proyecto.imagen %}
+                                        <img src="{{ proyecto.imagen.url }}" alt="Imagen Proyecto" class="img-fluid">
+                                    {% else %}
+                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="mb-3">
+                        <a href="{% url 'proyecto_crear' %}" class="btn btn-primary">Agregar nuevo Proyecto</a>
+                        <a class="btn btn-outline-dark fw-bolder" href="{% url 'Home' %}">Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock contenido %}
